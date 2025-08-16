@@ -1,0 +1,61 @@
+// world_file.wbt
+#include "worlds/empty.wbt"
+
+// Configuración básica del mundo
+WorldInfo {
+    // Parámetros físicos
+    physicsEngine Physics {
+        defaultContactERP 0.8
+        contactReturnLossThreshold 0.001
+    }
+    
+    // Configuración del tiempo
+    basicTimeUnit 0.01
+    basicStep 0.01
+    
+    // Cámara principal
+    Camera {
+        position [0 1.5 -2]
+        lookAt [0 0 0]
+    }
+}
+
+// Base móvil
+Robot {
+    translation [0 0 0]
+    rotation [0 1 0 -1.57]
+    controller "pendulum_controller"
+    supervisor FALSE
+    name "base_mobile"
+    
+    // Actuador diferencial
+    DifferentialWheels {
+        wheelSeparation 0.05
+        wheelDiameter 0.025
+    }
+    
+    // Péndulo invertido
+    Solid {
+        translation [0 0.2 0]
+        rotation [0 0 0]
+        name "pendulum"
+        
+        // Eje del péndulo
+        HingeJoint {
+            name "pendulum_joint"
+            anchor [0 0.2 0]
+            axis [0 1 0]
+            
+            // Sensor de posición
+            PositionSensor {
+                name "position_sensor"
+            }
+        }
+        
+        // Masa del péndulo
+        Box {
+            size [0.02 0.1 0.02]
+            density 100
+        }
+    }
+}
