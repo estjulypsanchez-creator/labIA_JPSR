@@ -12,4 +12,4 @@ despues de esto se realizo la segunda entrea con un controlador el cual es my_pr
 finalmente subi un codigo lab IA TERCERA ENTREGA.py este codigo contiene el codigo del pendulo invertido con manejo del movimiento del carrito con las letras  A D
 y tambien esta el laboratorio IA TERCERA ENTREGA 2.PY este codigo tiene el codigo del pendulo invertido y con las teclas se maneja la fuerzza del movimiento del pendulo, mas a la derecha, mas a la izquierda 
 
-se subio una presentacion explicando el modelo del pendulo invertido, y la explicacion de los codigos, asi como videos de su funcionamiento
+se subio el informe de esta guia 
