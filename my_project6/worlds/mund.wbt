@@ -1,0 +1,292 @@
+#VRML_SIM R2025a utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/BakelitePlastic.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/floors/protos/RectangleArena.proto"
+
+WorldInfo {
+}
+Viewpoint {
+  orientation -0.15839495017788177 0.22172378123108374 0.962158825036042 0.9707817042163855
+  position -1.6123152918928203 -2.1864507689533954 0.7741366088103467
+  followType "None"
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+RectangleArena {
+  floorSize 10 10
+  floorTileSize 10 10
+}
+Robot {
+  translation -0.271888 3.08548e-06 0.0727709
+  rotation 0.9922978962301389 -0.12003159618743145 0.03061537283682908 1.7683685022646887e-05
+  children [
+    SliderJoint {
+      jointParameters JointParameters {
+        axis 1 0 0
+        dampingConstant 1.5
+      }
+      device [
+        PositionSensor {
+        }
+        LinearMotor {
+          name "horizontalmotor"
+          maxForce 40
+        }
+      ]
+      endPoint Solid {
+        translation 0 0 0.06
+        children [
+          HingeJoint {
+            jointParameters HingeJointParameters {
+              position 0.000161402
+              axis 0 1 0
+              anchor 0 0 0.03
+            }
+            device [
+              PositionSensor {
+                name "HIP"
+              }
+            ]
+            endPoint DEF TIGHNN Solid {
+              translation 4.842059978976902e-05 -0.061 0.32999999609240926
+              rotation 0 1 0 0.00016140199888065778
+              children [
+                Shape {
+                  appearance PBRAppearance {
+                    baseColor 0 1 0
+                    baseColorMap ImageTexture {
+                      url [
+                        ""
+                      ]
+                    }
+                    roughness 1
+                    metalness 0
+                  }
+                  geometry Box {
+                    size 0.1 0.1 0.1
+                  }
+                }
+              ]
+              name "PENDUILO"
+              boundingObject Box {
+                size 0.05 0.02 0.6
+              }
+              physics Physics {
+                centerOfMass [
+                  0 0.061 -0.27
+                ]
+              }
+            }
+          }
+          DEF ROBOT Shape {
+            appearance PBRAppearance {
+              baseColor 0.333333 0.333333 0
+              roughness 1
+              metalness 0
+            }
+            geometry Box {
+              size 0.3 0.1 0.1
+            }
+          }
+        ]
+        name "solid(4)"
+        contactMaterial "ROBOT_BASIS"
+        boundingObject USE ROBOT
+        physics Physics {
+          density -1
+          mass 1
+        }
+      }
+    }
+    DEF imu InertialUnit {
+      children [
+        Shape {
+          appearance PBRAppearance {
+          }
+          geometry DEF imu Box {
+            size 0.01 0.01 0.01
+          }
+        }
+      ]
+      name "imu"
+      physics Physics {
+        mass 0.1
+      }
+    }
+    DEF lidar Lidar {
+      translation 0 0 0.075
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0 1 1
+            metalness 0
+          }
+          geometry DEF lidar Cylinder {
+            height 0.05
+            radius 0.04
+          }
+        }
+      ]
+      boundingObject USE lidar
+      physics Physics {
+      }
+      horizontalResolution 1024
+      fieldOfView 6.28
+      numberOfLayers 1
+      maxRange 2
+    }
+    DEF wheel1 HingeJoint {
+      jointParameters HingeJointParameters {
+        position -8.374807076471377
+        axis 0 1 0
+        anchor 0.1 0.12 -0.035
+      }
+      device [
+        DEF encoder1 PositionSensor {
+          name "encoder1"
+        }
+        DEF motor1 RotationalMotor {
+          name "motor1"
+        }
+      ]
+      endPoint Solid {
+        translation 0.1 0.12 -0.035
+        rotation -0.3788727965311366 0.6546515952640273 -0.6541304861164475 3.8664438163609463
+        children [
+          Shape {
+            appearance PBRAppearance {
+              baseColor 0 0 0
+              metalness 0
+            }
+            geometry DEF wheel1 Cylinder {
+              height 0.04
+              radius 0.04
+            }
+          }
+        ]
+        name "solid(3)"
+        boundingObject USE wheel1
+        physics Physics {
+          mass 0.2
+        }
+      }
+    }
+    DEF wheel2 HingeJoint {
+      jointParameters HingeJointParameters {
+        position -8.3748067288959
+        axis 0 1 0
+        anchor 0.1 -0.12 -0.035
+      }
+      device [
+        DEF encoder2 PositionSensor {
+          name "encoder2"
+        }
+        DEF motor2 RotationalMotor {
+          name "motor2"
+        }
+      ]
+      endPoint Solid {
+        translation 0.1 -0.12 -0.035
+        rotation -0.37887292655513494 0.6546515576090404 -0.654130448491434 3.8664440439017813
+        children [
+          Shape {
+            appearance PBRAppearance {
+              baseColor 0 0 0
+              metalness 0
+            }
+            geometry DEF wheel1 Cylinder {
+              height 0.04
+              radius 0.04
+            }
+          }
+        ]
+        name "solid(2)"
+        boundingObject USE wheel1
+        physics Physics {
+        }
+      }
+    }
+    DEF wheel3 HingeJoint {
+      jointParameters HingeJointParameters {
+        position -8.374806230454983
+        axis 0 1 0
+        anchor -0.1 0.12 -0.035
+      }
+      device [
+        DEF encoder3 PositionSensor {
+          name "encoder3"
+        }
+        DEF motor3 RotationalMotor {
+          name "motor3"
+        }
+      ]
+      endPoint Solid {
+        translation -0.1 0.12 -0.035
+        rotation -0.37887311301617127 0.654651503609844 -0.6541303945352225 3.86644437020689
+        children [
+          Shape {
+            appearance PBRAppearance {
+              baseColor 0 0 0
+              metalness 0
+            }
+            geometry DEF wheel1 Cylinder {
+              height 0.04
+              radius 0.04
+            }
+          }
+        ]
+        name "solid(1)"
+        boundingObject USE wheel1
+        physics Physics {
+        }
+      }
+    }
+    DEF wheel4 HingeJoint {
+      jointParameters HingeJointParameters {
+        position -8.374806181647827
+        axis 0 1 0
+        anchor -0.1 -0.12 -0.035
+      }
+      device [
+        DEF encoder4 PositionSensor {
+          name "encoder4"
+        }
+        DEF motor4 RotationalMotor {
+          name "motor4"
+        }
+      ]
+      endPoint Solid {
+        translation -0.1 -0.12 -0.035
+        rotation -0.3788731312743691 0.654651498322261 -0.6541303892518474 3.866444402158568
+        children [
+          Shape {
+            appearance PBRAppearance {
+              baseColor 0 0 0
+              metalness 0
+            }
+            geometry DEF wheel1 Cylinder {
+              height 0.04
+              radius 0.04
+            }
+          }
+        ]
+        boundingObject USE wheel1
+        physics Physics {
+        }
+      }
+    }
+    DEF body Shape {
+      appearance BakelitePlastic {
+      }
+      geometry DEF body Box {
+        size 0.3 0.2 0.1
+      }
+    }
+  ]
+  boundingObject USE body
+  physics Physics {
+  }
+  controller "my_contro"
+}
